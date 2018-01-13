@@ -30,3 +30,16 @@ tcp        0      0 0.0.0.0:44321           0.0.0.0:*               LISTEN      
 tcp        0      0 0.0.0.0:44323           0.0.0.0:*               LISTEN      -
 tcp6       0      0 :::44323                :::*                    LISTEN      -
 ```
+
+## Time Tracing
+For two HTTP-utilizing microservices: [UI Service](https://github.com/device-tracking-system/ui-service) and 
+[Edge Server](https://github.com/device-tracking-system/edge-server) the Spring Cloud Sleuth is used. This library is
+responsible for tagging HTTP requests so that they may be recognized and visualised by the Zipking tracing service.
+The dashboard illustrating recorded attributes is presented on the `9091` port when the 
+[Tracing Service](https://github.com/device-tracking-system/tracing-service) is ran.
+
+## AMQP Monitoring
+If the RabbitMQ broker instance is installed along with the [Management Plugin](https://www.rabbitmq.com/management.html),
+the monitoring dashboard presenting attributes of a messaging system (including exchanges, queues, bindings and metrics)
+is located on the `15672` port. Default credentials (user/password) for the management dashboard are: `guest/guest`.
+
