@@ -7,7 +7,7 @@ In order to run a performance monitoring dashboard, based on the Netflix Vector,
 ```
 docker run -p 9090:80 netflixoss/vector:latest
 ```
-The dashboard is running on the `9090` port in your Docker web. This tool monitors performance of all hosts and 
+The dashboard is running on the `9090` port in your Docker network. This tool monitors performance of all hosts and 
 containers running the Performance Co-Pilot (PCP) program by collecting necessary metrics in high resolution. In order 
 to install the PCP for monitoring given microservice, please refer to an appropriate repository.  
   
@@ -43,3 +43,15 @@ If the RabbitMQ broker instance is installed along with the [Management Plugin](
 the monitoring dashboard presenting attributes of a messaging system (including exchanges, queues, bindings and metrics)
 is located on the `15672` port. Default credentials (user/password) for the management dashboard are: `guest/guest`.
 
+## MongoDB Monitoring
+In order to run a [MongoDB Client](https://www.nosqlclient.com/) application, which offers many utilities as well as 
+provides some performance monitoring, please run a Docker container by typing:
+```
+docker run -p 9092:3000 -e MONGO_URL=[MONGODB SERVER URI] mongoclient/mongoclient
+``` 
+where the `[MONGODB SERVER URI]` in it's simplest form is given by `mongodb://[MONGODB HOST]:[MONGODB PORT]`. The client
+web application is running on the `9092` port in your Docker network. Once the application is opened, it is necessary to
+connect to the desired database by clicking the "Connect" button in the upper right corner and providing some necessary
+information such as: connection URL (i.e. the `MONGODB HOST]`), server port (i.e. the `[MONGODB PORT]`) and name of the
+database (e.g. `uiService` or `processingService`). After successful connection, the management panel for given database
+is opened. 
